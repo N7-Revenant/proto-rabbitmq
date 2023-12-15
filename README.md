@@ -1,1 +1,1 @@
-# proto-rabbitmq
+# RabbitMQ test project
