@@ -2,15 +2,18 @@
 import pika
 import time
 from pika.exceptions import NackError
+from random import randint
+
+QUEUE_NAME = 'hello'
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host='192.168.56.81', port=5672,
                               credentials=pika.credentials.PlainCredentials('test', 'test')))
 channel = connection.channel()
 
-channel.queue_delete(queue='hello')
+channel.queue_delete(queue=QUEUE_NAME)
 
-channel.queue_declare(queue='hello', arguments={
+channel.queue_declare(queue=QUEUE_NAME, arguments={
     'x-max-length': 30,
     'x-overflow': 'reject-publish'
 })
@@ -20,8 +23,9 @@ channel.confirm_delivery()
 while True:
     try:
         time.sleep(1)
-        channel.basic_publish(exchange='', routing_key='hello', body=b'Hello World!')
-        print(" [x] Sent 'Hello World!'")
+        text = "Hello World %s!" % randint(0, 9)
+        channel.basic_publish(exchange='', routing_key=QUEUE_NAME, body=text.encode())
+        print(" [x] Sent '%s'" % text)
 
     except KeyboardInterrupt:
         break
