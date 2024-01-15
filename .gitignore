@@ -1,3 +1,4 @@
 /v/
 /.vagrant/
 /*/Cargo.lock
+/*/target/
