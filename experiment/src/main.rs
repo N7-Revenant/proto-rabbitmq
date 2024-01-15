@@ -7,7 +7,7 @@ use tokio::{self};
 use tokio::io::Error as TError;
 use std::{str, thread, time::Duration};
 
-const QUEUE_NAME = "hello"
+const QUEUE_NAME: &str = "hello";
 
 #[tokio::main]
 async fn main() -> Result<(), Box<TError>> {
