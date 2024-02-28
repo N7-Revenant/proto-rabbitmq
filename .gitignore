@@ -1,4 +1,6 @@
 /v/
+/.idea/
 /.vagrant/
 /*/Cargo.lock
 /*/target/
+*.log

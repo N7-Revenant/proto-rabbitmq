@@ -44,7 +44,7 @@ async fn main() -> Result<(), Box<TError>> {
             }).await;
             if ch.is_open(){
                 println!("Queue removed!");
-            }else {
+            } else {
                 break
             }
         }
