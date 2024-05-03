@@ -4,7 +4,6 @@ use amqprs::{
     channel::{QueueDeclareArguments, BasicPublishArguments},
     BasicProperties
 };
-use tokio;
 use tokio::io::Error as TError;
 
 
