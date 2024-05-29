@@ -59,7 +59,7 @@ fn main() {
 
     loop {
         // just a hack to get owned values, because I used an iterator
-        let event = iter.next().unwrap().clone();
+        let event = *iter.next().unwrap();
         print!("__ Transition from {:?}", state);
         state = state.next(event);
         println!(" to {:?}", state);
